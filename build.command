@@ -15,9 +15,10 @@ fi
 
 mkdir -p build
 APP="build/CoCoDSKUtility.app"
+CACHE="/private/tmp/DiskUtilityModuleCache"
 rm -rf "$APP"
-mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-swiftc DiskUtility.swift -o "$APP/Contents/MacOS/CoCoDSKUtility"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$CACHE"
+swiftc -target arm64-apple-macosx13.0 -module-cache-path "$CACHE" DiskUtility.swift -o "$APP/Contents/MacOS/CoCoDSKUtility"
 cp Info.plist "$APP/Contents/Info.plist"
 cp "$DECB_ARM" "$APP/Contents/Resources/decb"
 chmod +x "$APP/Contents/Resources/decb"

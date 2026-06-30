@@ -17,6 +17,8 @@ fi
 APP="build/CoCoDSKUtility-Intel.app"
 ZIP="build/CoCoDSKUtility-Intel.zip"
 CACHE="/private/tmp/DiskUtilityModuleCache"
+STAGE="/private/tmp/CoCoDSKUtility-intel-package"
+STAGED_APP="$STAGE/CoCoDSKUtility.app"
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$CACHE"
@@ -25,9 +27,13 @@ cp Info.plist "$APP/Contents/Info.plist"
 cp "$DECB_X86" "$APP/Contents/Resources/decb"
 chmod +x "$APP/Contents/Resources/decb"
 
-xattr -cr "$APP"
-codesign --force --deep --sign - "$APP"
+rm -rf "$STAGE"
+mkdir -p "$STAGE"
+ditto --noextattr --norsrc "$APP" "$STAGED_APP"
+xattr -cr "$STAGED_APP"
+xattr -d com.apple.FinderInfo "$STAGED_APP" 2>/dev/null || true
+codesign --force --deep --sign - "$STAGED_APP"
 rm -f "$ZIP"
-ditto -c -k --keepParent "$APP" "$ZIP"
+ditto -c -k --keepParent "$STAGED_APP" "$ZIP"
 
 echo "Packaged $ZIP"
