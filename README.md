@@ -36,14 +36,6 @@ If double-clicking still opens another app, set CoCoDSKUtility as the default:
 
 Now double-clicking `.DSK` files should open them directly in CoCoDSKUtility and show the directory contents.
 
-## Run From Source
-
-During development, double-click `run.command`, or run:
-
-```text
-DiskUtility/run.command
-```
-
 ## Features
 
 - Open a `.DSK` image and show its directory.
