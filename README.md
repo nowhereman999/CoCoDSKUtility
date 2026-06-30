@@ -6,7 +6,7 @@ Native macOS GUI for inspecting and moving files in CoCo `.DSK` images. It uses 
 
 Use the correct zip for the target Mac:
 
-- Apple Silicon / M1, M2, M3, M4: `CoCoDSKUtility-M1.zip`
+- arm64 Macs: `CoCoDSKUtility-arm.zip`
 - Intel Macs: `CoCoDSKUtility-Intel.zip`
 
 To install:
@@ -51,20 +51,20 @@ Files copied into the disk image use `decb copy -2 -b -r`, so they are written a
 
 ## Packaging
 
-`package.command` creates the Apple Silicon package:
+`package.command` creates the arm64 package:
 
 ```sh
-DiskUtility/package.command
+./package.command
 ```
 
 It bundles the arm64 `decb` binary from:
 
 ```text
-DiskUtility/decb
+decb
 ```
 
 `package-intel.command` creates an Intel package and bundles the x86_64 `decb` binary from:
 
 ```text
-DiskUtility/decb-x86_64
+decb-x86_64
 ```
