@@ -9,6 +9,12 @@ Use the correct zip for the target Mac:
 - arm64 Macs: `CoCoDSKUtility-arm.zip`
 - Intel Macs: `CoCoDSKUtility-Intel.zip`
 
+Minimum macOS version:
+
+- macOS 13 Ventura or newer is required for both packages.
+- The arm64 package is for Apple Silicon Macs.
+- The Intel package is for x86_64 Intel Macs.
+
 To install:
 
 1. Unzip the package.
